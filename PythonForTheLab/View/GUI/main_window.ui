@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>401</width>
-    <height>277</height>
+    <width>489</width>
+    <height>279</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -71,6 +71,20 @@
        <item>
         <widget class="QLineEdit" name="num_steps_line"/>
        </item>
+       <item>
+        <widget class="QLabel" name="label">
+         <property name="text">
+          <string>Out</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="out_line">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
       </layout>
      </widget>
     </item>
@@ -99,6 +113,20 @@
        </item>
        <item>
         <widget class="QLineEdit" name="delay_line"/>
+       </item>
+       <item>
+        <widget class="QLabel" name="label_2">
+         <property name="text">
+          <string>Measured</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="measured_line">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+        </widget>
        </item>
        <item>
         <spacer name="horizontalSpacer">
@@ -143,8 +171,8 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>401</width>
-     <height>20</height>
+     <width>489</width>
+     <height>24</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
