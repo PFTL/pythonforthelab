@@ -11,8 +11,7 @@ setup(
     license='GPLv3',
     classifiers=[
         "Programming Language :: Python :: 3",
-        "Programming Language :: Python :: 3.6",
-        "Programming Language :: Python :: 3.7",
+        "Programming Language :: Python :: 3.9",
     ],
     author='Aquiles Carattino',
     author_email='aquiles@pythonforthelab.com',
