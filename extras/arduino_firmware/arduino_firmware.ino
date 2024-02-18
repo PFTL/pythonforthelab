@@ -1,82 +1,92 @@
-String Comm;
+#include <Regexp.h>
 
-int output = DAC0;
-int input;
-int val;
-String inData;
-String tempValue;
-String channel;
-int sensorPin = A0;    // select the input pin for the potentiometer
-int sensorValue;
-bool isData = false;
-int i = 0;
-int ledPin = 53;
+#define IDN_STRING "PFT DAQ device. Rev 02.2024"
+#define INVALID_CHANNEL_MSG "ERROR: Invalid channel number"
+#define ERROR_COMMAND "ERROR: UNKNOWN COMMAND"
+#define OUT_OF_RANGE_MSG "ERROR: Out of range"
+
+#define DAC_BITS 12
+#define ADC_BITS 10
+
+#define COM_IDN "*IDN?"                                  // *IDN?
+#define COM_WRITE_DAC "^OUT:CH(%d) (%d+)$"               // e.g. OUT:CH0 1023
+#define COM_READ_DAC "^OUT:CH(%d)%?$"                    // e.g. OUT:CH0?
+#define COM_READ_ADC "^MEAS:CH(%d)%?$"                   // e.g. MEAS:CH1?
+
+#define BUFFER_LENGTH 100
+
+int DACchannel[] = { DAC0, DAC1 };
+int ADCchannel[] = { A0, A1, A2, A3, A4, A5, A6, A7 };
+
+#define MAX_DAC_CHANNEL sizeof(DACchannel) / sizeof(int)
+#define MAX_ADC_CHANNEL sizeof(ADCchannel) / sizeof(int)
+
+int DACvalues[MAX_DAC_CHANNEL];
+
 
 void setup() {
+  int i;
   Serial.begin(9600);
-  while (!Serial);
-  analogWriteResolution(12);
-  analogWrite(DAC0, 0);
-  analogWrite(DAC1, 0);
-  pinMode(ledPin, OUTPUT);
+  while (!Serial) ;
+  Serial.setTimeout(-1);
+  Serial.flush();
+  analogWriteResolution(DAC_BITS);
+  analogReadResolution(ADC_BITS);
+  for (i = 0; i < MAX_DAC_CHANNEL; i++) {
+    analogWrite(DACchannel[i], 0);
+    DACvalues[i] = 0;
+  }
 }
 
 void loop() {
-  while (Serial.available() > 0 ) {
-    char value = Serial.read();
-    Comm += value;
-    if (value == '\n') {
-      isData = true;
-    }
+  String msg;
+  MatchState ms;
+  char buffer[BUFFER_LENGTH];
+  int channel, value;
+  float volt;
+
+  msg = Serial.readStringUntil('\n');
+  msg.toCharArray(buffer, BUFFER_LENGTH);
+  ms.Target(buffer);
+
+  if (msg == COM_IDN) {
+    Serial.println(IDN_STRING);
   }
-  if (isData) {
-    isData = false;
-    if (Comm.startsWith("IDN")) {
-      Serial.print("General DAQ Device built by Uetke. v.1.2019");
-      Serial.print("\n");
-    }
-    else if (Comm.startsWith("OUT")) {
-      channel = Comm[6];
-      if (channel.toInt() == 1) {
-        output = DAC1;
+
+  // write DAC value
+  else if (ms.Match(COM_WRITE_DAC) == 1) {
+    channel = atoi(ms.GetCapture(buffer, 0));
+    if (channel >= 0 && channel < MAX_DAC_CHANNEL) {
+      value = atoi(ms.GetCapture(buffer, 1));
+      if (value >= pow(2, DAC_BITS)) {
+        Serial.println(OUT_OF_RANGE_MSG);
+      } else {
+        analogWrite(DACchannel[channel], value);
+        DACvalues[channel] = value;
+        Serial.println(value);
       }
-      else if (channel.toInt() == 0) {
-        output = DAC0;
-      }
-      tempValue = "";
-      for (i = 8; i < Comm.length(); i++) {
-        tempValue += Comm[i];
-      }
-      val = tempValue.toInt();
-      analogWrite(output, val);
-      Serial.print(tempValue);
-    }
-    else if (Comm.startsWith("IN")) {
-      channel = Comm[5];
-      input = channel.toInt();
-      val = analogRead(input);
-      Serial.print(val);
-      Serial.print("\n");
-    }
-    else if (Comm.startsWith("DI")){
-      Serial.println("Digital");
-      channel = Comm[3]+Comm[4];
-      tempValue = Comm[6];
-      if (tempValue.toInt() == 0){
-        digitalWrite(ledPin, LOW);
-        Serial.println("OFF");
-        Serial.println(ledPin);
-        }
-        else{
-          digitalWrite(ledPin, HIGH);
-          Serial.println("ON");
-          Serial.println(channel.toInt());
-          }
-    }
-    else {
-      Serial.print("Command not known\n");
-    }
-    Comm = "";
+    } else Serial.println(INVALID_CHANNEL_MSG);
+  }
+
+  // request current DAC value in volts
+  else if (ms.Match(COM_READ_DAC) == 1) {
+    channel = atoi(ms.GetCapture(buffer, 0));
+    if (channel >= 0 && channel < MAX_DAC_CHANNEL) {
+      Serial.println(DACvalues[channel]);
+    } else Serial.println(INVALID_CHANNEL_MSG);
+  }
+
+  // request ADC measurement value
+  else if (ms.Match(COM_READ_ADC) == 1) {
+    channel = atoi(ms.GetCapture(buffer, 0));
+    if (channel >= 0 && channel < MAX_ADC_CHANNEL) {
+      Serial.println(analogRead(ADCchannel[channel]));
+    } else Serial.println(INVALID_CHANNEL_MSG);
+  }
+
+  else {
+    Serial.print(ERROR_COMMAND);
+    Serial.println(msg);
   }
   delay(20);
 }
