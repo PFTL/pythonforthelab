@@ -13,11 +13,12 @@ from PyQt5 import uic
 from PyQt5.QtCore import QTimer
 from PyQt5.QtWidgets import QMainWindow
 
-pg.setConfigOption('background', 'w')
-pg.setConfigOption('foreground', 'k')
+pg.setConfigOption("background", "w")
+pg.setConfigOption("foreground", "k")
+
 
 class MainWindow(QMainWindow):
-    """ Main Window for the user interface
+    """Main Window for the user interface
 
     Parameters
     ----------
@@ -35,24 +36,21 @@ class MainWindow(QMainWindow):
     start_button : QPushButton
         The start button
     """
+
     def __init__(self, experiment=None):
         super().__init__()
         self.experiment = experiment
-        self.setWindowTitle('Scan Window')
+        self.setWindowTitle("Scan Window")
 
         base_dir = os.path.dirname(os.path.abspath(__file__))
-        ui_file = os.path.join(base_dir, 'GUI', 'main_window.ui')
+        ui_file = os.path.join(base_dir, "GUI", "main_window.ui")
         uic.loadUi(ui_file, self)
 
         self.plot_widget = pg.PlotWidget(
-            title="Plotting I vs V",
-            labels={
-                'left': 'Current',
-                'bottom': 'Voltage'
-                }
-            )
+            title="Plotting I vs V", labels={"left": "Current", "bottom": "Voltage"}
+        )
 
-        pen = pg.mkPen(cosmetic=False, width=.02, color='black')
+        pen = pg.mkPen(cosmetic=False, width=0.02, color="black")
         self.plot = self.plot_widget.plot([0], [0], pen=pen)
         layout = self.central_widget.layout()
         layout.addWidget(self.plot_widget)
@@ -65,12 +63,14 @@ class MainWindow(QMainWindow):
         self.stop_button.clicked.connect(self.stop_scan)
         self.actionSave.triggered.connect(self.experiment.save_data)
 
-        self.start_line.setText(self.experiment.config['Scan']['start'])
-        self.stop_line.setText(self.experiment.config['Scan']['stop'])
-        self.num_steps_line.setText(str(self.experiment.config['Scan']['num_steps']))
-        self.delay_line.setText(self.experiment.config['Scan']['delay'])
-        self.out_channel_line.setText(str(self.experiment.config['Scan']['channel_out']))
-        self.in_channel_line.setText(str(self.experiment.config['Scan']['channel_in']))
+        self.start_line.setText(self.experiment.config["Scan"]["start"])
+        self.stop_line.setText(self.experiment.config["Scan"]["stop"])
+        self.num_steps_line.setText(str(self.experiment.config["Scan"]["num_steps"]))
+        self.delay_line.setText(self.experiment.config["Scan"]["delay"])
+        self.out_channel_line.setText(
+            str(self.experiment.config["Scan"]["channel_out"])
+        )
+        self.in_channel_line.setText(str(self.experiment.config["Scan"]["channel_in"]))
 
         self.gui_timer = QTimer()
         self.plot_timer = QTimer()
@@ -80,8 +80,10 @@ class MainWindow(QMainWindow):
         self.gui_timer.timeout.connect(self.update_gui)
 
     def update_plot(self):
-        self.plot.setData(self.experiment.scan_range[:self.experiment.current_scan_index].m_as("V"),
-                          self.experiment.scan_data[:self.experiment.current_scan_index].m_as("V"))
+        self.plot.setData(
+            self.experiment.scan_range[: self.experiment.current_scan_index].m_as("V"),
+            self.experiment.scan_data[: self.experiment.current_scan_index].m_as("V"),
+        )
 
         if not self.experiment.is_running:
             self.plot_timer.stop()
@@ -94,14 +96,15 @@ class MainWindow(QMainWindow):
         channel_in = int(self.in_channel_line.text())
         channel_out = int(self.out_channel_line.text())
 
-        self.experiment.config['Scan'].update(
-            {'start': start,
-             'stop': stop,
-             'num_steps': num_steps,
-             'channel_in': channel_in,
-             'channel_out': channel_out,
-             'delay': delay,
-             }
+        self.experiment.config["Scan"].update(
+            {
+                "start": start,
+                "stop": stop,
+                "num_steps": num_steps,
+                "channel_in": channel_in,
+                "channel_out": channel_out,
+                "delay": delay,
+            }
         )
         self.experiment.start_scan()
         self.plot_timer.start(50)
@@ -120,4 +123,4 @@ class MainWindow(QMainWindow):
 
     def stop_scan(self):
         self.experiment.stop_scan()
-        print('Stopping Scan')
+        print("Stopping Scan")

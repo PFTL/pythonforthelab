@@ -13,17 +13,14 @@ Convenience function to wrap the initialization of a window. The Experiment clas
 """
 import sys
 from PyQt5.QtWidgets import QApplication
-from PythonForTheLab.Model.experiment import Experiment
 from PythonForTheLab.View.main_window import MainWindow
 
 
 def start_gui(experiment):
-    """ Starts a GUI for the ScanWindow using the provided experiment.
+    """Starts a GUI for the ScanWindow using the provided experiment.
     :param Experiment experiment: Experiment object with a loaded config.
     """
     ap = QApplication(sys.argv)
     m = MainWindow(experiment)
     m.show()
     ap.exit(ap.exec_())
-
-

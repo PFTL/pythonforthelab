@@ -12,8 +12,7 @@ import sys
 
 
 def start():
-    """Starts the GUI for the experiment using the config file specified as system argument.
-    """
+    """Starts the GUI for the experiment using the config file specified as system argument."""
     args = sys.argv[1:]
     if len(args) != 1:
         print(help_message)
@@ -28,8 +27,7 @@ def start():
     start_gui(experiment)
 
 
-help_message = \
-"""
+help_message = """
 Welcome to Python For The Lab
 -----------------------------
 In order to run the program, you need to supply the path to the config file.

@@ -6,6 +6,7 @@ This helps keeping the code organized and to maintain downstream compliancy.
 
 """
 
+
 class DAQBase:
     def __init__(self, port):
         self.port = port
