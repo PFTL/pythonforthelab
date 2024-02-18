@@ -56,6 +56,23 @@ class AnalogDaq:
         value_int = round(value_volts / 3.3 * 4095)
         self.driver.set_analog_output(channel, value_int)
 
+    def get_output_voltage(self, channel):
+        """ Gets the voltage from a given output channel
+
+        Parameters
+        ----------
+        channel : int
+            The channel number
+
+        Returns
+        -------
+        Quantity
+            The voltage setpoint in the channel
+        """
+        voltage_bits = self.driver.get_analog_output(channel)
+        voltage = voltage_bits * ur('3.3V')/4095
+        return voltage
+
     def get_voltage(self, channel):
         """ Retrieve the voltage from the device
 

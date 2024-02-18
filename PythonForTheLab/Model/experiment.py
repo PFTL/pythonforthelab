@@ -29,6 +29,9 @@ class Experiment:
         self.scan_range = np.array([0]) * ur('V')
         self.scan_data = np.array([0]) * ur('V')
 
+        self.last_measured_value = 0 * ur('V')
+        self.voltage_out = 0 * ur('V')
+
     def load_config(self):
         """ Load the configuration file """
         with open(self.config_file, 'r') as f:
@@ -70,7 +73,9 @@ class Experiment:
             if not self.keep_running:
                 break
             self.daq.set_voltage(self.config['Scan']['channel_out'], volt)
+            self.voltage_out = self.daq.get_output_voltage(self.config['Scan']['channel_out'])
             measured_voltage = self.daq.get_voltage(self.config['Scan']['channel_in'])
+            self.last_measured_value = measured_voltage
             self.scan_data[i] = measured_voltage
             i += 1
             sleep(delay.m_as('s'))
