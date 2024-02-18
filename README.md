@@ -10,7 +10,7 @@ You can find the code of this package at [Github](https://github.com/PFTL/python
 
 The GUI
 -------
-![GUI of Python For The Lab](./Docs/source/_static/GUI_Python_For_The_Lab.png?raw=true)
+![GUI of Python For The Lab](./Docs/source/_static/GUI_Python_For_The_Lab.gif?raw=true)
 
 If you follow the Python for the Lab course, the GUI is going to be the last step. You perform an analog output scan while acquiring the voltage on a different port. This will allow the users to acquire an I-V scan or any other voltage-dependent measurement.
 

@@ -5,15 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9ec2a705-c50c-4efa-bbc1-2f39cfed9d10" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/ch_future.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/ch_future.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Examples/experiment.yml" beforeDir="false" afterPath="$PROJECT_DIR$/Examples/experiment.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PythonForTheLab/Controller/pftl_daq.py" beforeDir="false" afterPath="$PROJECT_DIR$/PythonForTheLab/Controller/pftl_daq.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PythonForTheLab/Model/analog_daq.py" beforeDir="false" afterPath="$PROJECT_DIR$/PythonForTheLab/Model/analog_daq.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/source/_static/GUI_Python_For_The_Lab.png" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/source/_static/GUI_Python_For_The_Lab.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PythonForTheLab/Model/experiment.py" beforeDir="false" afterPath="$PROJECT_DIR$/PythonForTheLab/Model/experiment.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PythonForTheLab/View/GUI/main_window.ui" beforeDir="false" afterPath="$PROJECT_DIR$/PythonForTheLab/View/GUI/main_window.ui" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PythonForTheLab/View/main_window.py" beforeDir="false" afterPath="$PROJECT_DIR$/PythonForTheLab/View/main_window.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/extras/arduino_firmware/arduino_firmware.ino" beforeDir="false" afterPath="$PROJECT_DIR$/extras/arduino_firmware/arduino_firmware.ino" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/setup.py" beforeDir="false" afterPath="$PROJECT_DIR$/setup.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,7 +43,7 @@
       <option name="presentableId" value="Default" />
       <updated>1665596640017</updated>
       <workItem from="1665596641927" duration="811000" />
-      <workItem from="1708246090688" duration="3578000" />
+      <workItem from="1708246090688" duration="5406000" />
     </task>
     <servers />
   </component>
