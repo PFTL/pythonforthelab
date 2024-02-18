@@ -61,7 +61,7 @@ class Device:
             The serial number of the device
         """
 
-        return self.query('IDN')
+        return self.query('*IDN?')
 
     def get_analog_input(self, channel):
         """ Get the Analog input in a channel
@@ -78,7 +78,7 @@ class Device:
         int
             The value
         """
-        message = 'IN:CH{}'.format(channel)
+        message = f'MEAS:CH{channel}?'
         ans = self.query(message)
         ans = int(ans)
         return ans
@@ -93,8 +93,25 @@ class Device:
         output_value : int
             The output value in the range 0-4095
         """
-        message = 'OUT:CH{}:{}'.format(channel, output_value)
+        message = f'OUT:CH{channel} {output_value}'
         self.query(message)
+
+    def get_analog_output(self, channel):
+        """ Retrieves the current value set to the analog channel
+
+        Parameters
+        ----------
+        channel : int
+            The channel from which to retrieve the value
+
+        Returns
+        -------
+            The setpoint in the given channel
+        """
+        message = f"OUT:CH{channel}?"
+        ans = self.query(message)
+        ans = int(ans)
+        return ans
 
     def query(self, message):
         """ Wrapper around writing and reading to make the flow easier.
