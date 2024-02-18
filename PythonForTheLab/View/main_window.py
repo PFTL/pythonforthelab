@@ -13,6 +13,8 @@ from PyQt5 import uic
 from PyQt5.QtCore import QTimer
 from PyQt5.QtWidgets import QMainWindow
 
+pg.setConfigOption('background', 'w')
+pg.setConfigOption('foreground', 'k')
 
 class MainWindow(QMainWindow):
     """ Main Window for the user interface
@@ -42,10 +44,22 @@ class MainWindow(QMainWindow):
         ui_file = os.path.join(base_dir, 'GUI', 'main_window.ui')
         uic.loadUi(ui_file, self)
 
-        self.plot_widget = pg.PlotWidget(title="Plotting I vs V")
-        self.plot = self.plot_widget.plot([0], [0])
+        self.plot_widget = pg.PlotWidget(
+            title="Plotting I vs V",
+            labels={
+                'left': 'Current',
+                'bottom': 'Voltage'
+                }
+            )
+
+        pen = pg.mkPen(cosmetic=False, width=.02, color='black')
+        self.plot = self.plot_widget.plot([0], [0], pen=pen)
         layout = self.central_widget.layout()
         layout.addWidget(self.plot_widget)
+
+        plot_item = self.plot_widget.getPlotItem()
+        plot_item.setXRange(0, 3.3)
+        plot_item.setYRange(0, 1)
 
         self.start_button.clicked.connect(self.start_scan)
         self.stop_button.clicked.connect(self.stop_scan)
@@ -66,7 +80,8 @@ class MainWindow(QMainWindow):
         self.gui_timer.timeout.connect(self.update_gui)
 
     def update_plot(self):
-        self.plot.setData(self.experiment.scan_range.m_as("V"), self.experiment.scan_data.m_as("V"))
+        self.plot.setData(self.experiment.scan_range[:self.experiment.current_scan_index].m_as("V"),
+                          self.experiment.scan_data[:self.experiment.current_scan_index].m_as("V"))
 
         if not self.experiment.is_running:
             self.plot_timer.stop()
