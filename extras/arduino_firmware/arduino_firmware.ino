@@ -1,6 +1,6 @@
 #include <Regexp.h>
 
-#define IDN_STRING "PFT DAQ device. Rev 02.2024"
+#define IDN_STRING "PFTL DAQ device. Rev 02.2024"
 #define INVALID_CHANNEL_MSG "ERROR: Invalid channel number"
 #define ERROR_COMMAND "ERROR: UNKNOWN COMMAND"
 #define OUT_OF_RANGE_MSG "ERROR: Out of range"

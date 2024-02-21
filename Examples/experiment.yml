@@ -3,7 +3,7 @@ User:
 
 DAQ:
   name: AnalogDaq
-  port: /dev/cu.usbmodem1101
+  port: /dev/cu.usbmodem1301
 
 Scan:
   start: 0V

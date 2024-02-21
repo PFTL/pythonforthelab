@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9ec2a705-c50c-4efa-bbc1-2f39cfed9d10" name="Changes" comment="" />
+    <list default="true" id="9ec2a705-c50c-4efa-bbc1-2f39cfed9d10" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Examples/experiment.yml" beforeDir="false" afterPath="$PROJECT_DIR$/Examples/experiment.yml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -21,12 +24,12 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "last_opened_file_path": "/Users/aquiles/Documents/PythonForTheLab/code/pythonforthelab",
-    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyIntegratedToolsModulesConfigurable"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;last_opened_file_path&quot;: &quot;/Users/aquiles/Documents/PythonForTheLab/code/pythonforthelab&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyIntegratedToolsModulesConfigurable&quot;
   }
-}]]></component>
+}</component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -36,7 +39,9 @@
       <option name="presentableId" value="Default" />
       <updated>1665596640017</updated>
       <workItem from="1665596641927" duration="811000" />
-      <workItem from="1708246090688" duration="6096000" />
+      <workItem from="1708246090688" duration="10336000" />
+      <workItem from="1708506919473" duration="668000" />
+      <workItem from="1708520824029" duration="601000" />
     </task>
     <servers />
   </component>
