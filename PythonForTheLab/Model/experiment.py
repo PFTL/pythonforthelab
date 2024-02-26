@@ -7,6 +7,8 @@ experiments. It allows to build simple GUIs around them and to easily share the 
 """
 import threading
 from datetime import datetime
+from pathlib import Path
+
 import numpy as np
 import os
 from time import sleep
@@ -78,11 +80,11 @@ class Experiment:
         for volt in self.scan_range:
             if not self.keep_running:
                 break
-            self.daq.set_voltage(self.config["Scan"]["channel_out"], volt)
+            self.daq.set_output_voltage(self.config["Scan"]["channel_out"], volt)
             self.voltage_out = self.daq.get_output_voltage(
                 self.config["Scan"]["channel_out"]
             )
-            measured_voltage = self.daq.get_voltage(self.config["Scan"]["channel_in"])
+            measured_voltage = self.daq.get_input_voltage(self.config["Scan"]["channel_in"])
             self.last_measured_value = measured_voltage
             self.scan_data[self.current_scan_index] = measured_voltage
             self.current_scan_index += 1
@@ -100,24 +102,28 @@ class Experiment:
 
     def save_data(self):
         """Save data to the folder specified in the config file."""
-        data_folder = self.config["Saving"]["folder"]
+
+        data_folder = Path(self.config["Saving"]["folder"])
         today_folder = f"{datetime.today():%Y-%m-%d}"
-        saving_folder = os.path.join(data_folder, today_folder)
-        if not os.path.isdir(saving_folder):
-            os.makedirs(saving_folder)
+        saving_folder = data_folder / today_folder
+
+        saving_folder.mkdir(exist_ok=True, parents=True)
 
         data = np.vstack([self.scan_range, self.scan_data]).T
         header = "Scan range in 'V', Scan Data in 'V'"
 
-        filename = self.config["Saving"]["filename"]
-        base_name = filename.split(".")[0]
-        ext = filename.split(".")[-1]
+        filename = Path(self.config["Saving"]["filename"])
+        complete_path = saving_folder / filename
+
         i = 1
-        while os.path.isfile(os.path.join(saving_folder, f"{base_name}_{i:04d}.{ext}")):
+        while complete_path.exists():
+            new_filename = f'{filename.stem}_{i:04d}{filename.suffix}'
+            complete_path = saving_folder / new_filename
             i += 1
-        data_file = os.path.join(saving_folder, f"{base_name}_{i:04d}.{ext}")
-        metadata_file = os.path.join(saving_folder, f"{base_name}_{i:04d}_metadata.yml")
-        np.savetxt(data_file, data.m_as("V"), header=header)
+
+        metadata_file = complete_path.with_suffix('.yml')
+        np.savetxt(complete_path, data.m_as("V"), header=header)
+
         with open(metadata_file, "w") as f:
             f.write(yaml.dump(self.config, default_flow_style=False))
 
@@ -127,3 +133,5 @@ class Experiment:
         self.stop_scan()
         while self.is_running:
             sleep(0.1)
+
+        self.daq.finalize()

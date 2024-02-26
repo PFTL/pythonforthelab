@@ -25,6 +25,7 @@ def start():
     experiment.load_config()
     experiment.load_daq()
     start_gui(experiment)
+    experiment.finalize()
 
 
 help_message = """

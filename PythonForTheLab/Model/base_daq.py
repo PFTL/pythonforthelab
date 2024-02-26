@@ -14,10 +14,16 @@ class DAQBase:
     def initialize(self):
         pass
 
-    def get_voltage(self, channel):
+    def idn(self):
         pass
 
-    def set_voltage(self, channel, volts):
+    def get_input_voltage(self, channel):
+        pass
+
+    def set_output_voltage(self, channel, volts):
+        pass
+
+    def get_output_voltage(self, channel):
         pass
 
     def finalize(self):

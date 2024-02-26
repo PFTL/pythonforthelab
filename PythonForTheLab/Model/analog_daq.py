@@ -34,16 +34,16 @@ class AnalogDaq:
     def initialize(self):
         """Initialize the driver and sets the voltage on the outputs to 0"""
         self.driver.initialize()
-        self.set_voltage(0, ur("0V"))
-        self.set_voltage(1, ur("0V"))
+        self.set_output_voltage(0, ur("0V"))
+        self.set_output_voltage(1, ur("0V"))
 
     def finalize(self):
         """Set the outputs to 0V and finalize the driver"""
-        self.set_voltage(0, ur("0V"))
-        self.set_voltage(1, ur("0V"))
+        self.set_output_voltage(0, ur("0V"))
+        self.set_output_voltage(1, ur("0V"))
         self.driver.finalize()
 
-    def set_voltage(self, channel, volts):
+    def set_output_voltage(self, channel, volts):
         """Set the voltage to a given value on a given channel
 
         Parameters
@@ -74,7 +74,7 @@ class AnalogDaq:
         voltage = voltage_bits * ur("3.3V") / 4095
         return voltage
 
-    def get_voltage(self, channel):
+    def get_input_voltage(self, channel):
         """Retrieve the voltage from the device
 
         Parameters
@@ -99,7 +99,7 @@ if __name__ == "__main__":
     daq = AnalogDaq("/dev/ttyACM0")
     daq.initialize()
     voltage = ur("3000mV")
-    daq.set_voltage(0, voltage)
-    input_volts = daq.get_voltage(0)
+    daq.set_output_voltage(0, voltage)
+    input_volts = daq.get_input_voltage(0)
     print(input_volts)
     daq.finalize()

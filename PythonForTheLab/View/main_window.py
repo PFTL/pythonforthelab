@@ -8,6 +8,8 @@ own .ui file, generated with Qt Designer.
 
 import os
 
+from pathlib import Path
+
 import pyqtgraph as pg
 from PyQt5 import uic
 from PyQt5.QtCore import QTimer
@@ -42,18 +44,16 @@ class MainWindow(QMainWindow):
         self.experiment = experiment
         self.setWindowTitle("Scan Window")
 
-        base_dir = os.path.dirname(os.path.abspath(__file__))
-        ui_file = os.path.join(base_dir, "GUI", "main_window.ui")
+        base_dir = Path(__file__).parent
+        ui_file = base_dir / "GUI" / "main_window.ui"
         uic.loadUi(ui_file, self)
 
-        self.plot_widget = pg.PlotWidget(
-            title="Plotting I vs V", labels={"left": "Current", "bottom": "Voltage"}
-        )
+        # self.plot_widget = pg.PlotWidget(
+        #     title="Plotting I vs V", labels={"left": "Current", "bottom": "Voltage"}
+        # )
 
         pen = pg.mkPen(cosmetic=False, width=0.02, color="black")
-        self.plot = self.plot_widget.plot([0], [0], pen=pen)
-        layout = self.central_widget.layout()
-        layout.addWidget(self.plot_widget)
+        self.plot = self.plot_widget.plot([0], [0], pen=pen, title='I vs V')
 
         plot_item = self.plot_widget.getPlotItem()
         plot_item.setXRange(0, 3.3)
@@ -107,6 +107,9 @@ class MainWindow(QMainWindow):
             }
         )
         self.experiment.start_scan()
+        self.plot_widget.setLabel('bottom', f"Port: {self.experiment.config['Scan']['channel_out']}", units="V")
+        self.plot_widget.setLabel('left', f"Port: {self.experiment.config['Scan']['channel_in']}", units="V")
+
         self.plot_timer.start(50)
 
     def update_gui(self):

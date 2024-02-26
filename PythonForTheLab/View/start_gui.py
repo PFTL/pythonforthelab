@@ -23,4 +23,4 @@ def start_gui(experiment):
     ap = QApplication(sys.argv)
     m = MainWindow(experiment)
     m.show()
-    ap.exit(ap.exec_())
+    ap.exit(ap.exec())
