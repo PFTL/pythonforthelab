@@ -1,3 +1,5 @@
+.idea/ #PyCharm files
+
 # OS-dependent files
 .DS_Store
 
