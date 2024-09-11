@@ -2,7 +2,7 @@ User:
   name: Aquiles
 
 DAQ:
-  name: AnalogDaq
+  name: DummyDaq # Choose between DummyDaq or AnalogDaq
   port: /dev/cu.usbmodem1301
 
 Scan:
