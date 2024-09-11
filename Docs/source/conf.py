@@ -148,7 +148,7 @@ latex_elements = {
 latex_documents = [
     (
         master_doc,
-        "PythonForTheLab.tex",
+        "PFTL.tex",
         "Python For The Lab Documentation",
         "Aquiles Carattino",
         "manual",
@@ -171,10 +171,10 @@ man_pages = [
 texinfo_documents = [
     (
         master_doc,
-        "PythonForTheLab",
+        "PFTL",
         "Python For The Lab Documentation",
         author,
-        "PythonForTheLab",
+        "PFTL",
         "One line description of project.",
         "Miscellaneous",
     ),

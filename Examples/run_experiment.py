@@ -8,7 +8,7 @@ sys.path.append(base_dir)
 
 from time import sleep
 import threading
-from PythonForTheLab.Model.experiment import Experiment
+from PFTL.model.experiment import Experiment
 
 
 experiment = Experiment("experiment.yml")
