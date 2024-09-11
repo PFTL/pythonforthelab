@@ -12,7 +12,9 @@ Convenience function to wrap the initialization of a window. The Experiment clas
 
 """
 import sys
+
 from PyQt5.QtWidgets import QApplication
+
 from PFTL.view.main_window import MainWindow
 
 

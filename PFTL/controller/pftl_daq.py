@@ -11,8 +11,9 @@ value by value and not a sequence. This forces the developer to think on how to 
 purely on Python.
 """
 
-import serial
 from time import sleep
+
+import serial
 
 
 class Device:

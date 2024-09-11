@@ -6,8 +6,6 @@ own .ui file, generated with Qt Designer.
 
 """
 
-import os
-
 from pathlib import Path
 
 import pyqtgraph as pg

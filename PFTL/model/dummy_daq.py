@@ -4,9 +4,9 @@ Dummy DAQ model
 it only generates random values.
 """
 from random import random
-from PFTL.model.base_daq import DAQBase
 
 from PFTL import ur
+from PFTL.model.base_daq import DAQBase
 
 
 class DummyDaq(DAQBase):
