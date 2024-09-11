@@ -2,22 +2,23 @@
 Analog DAQ
 ==========
 Class for communicating with a real device. It implements the base for communicating with the device
-through a Controller. The experiment in mind is measuring the I-V curve of a diode, adding the logic
-into a separate Model for the experiment may seem redundant, but incredibly useful in bigger projects.
+through a controller. The experiment in mind is measuring the I-V curve of a diode, adding the logic
+into a separate model for the experiment may seem redundant, but incredibly useful in bigger projects.
 
 """
-from PythonForTheLab.Controller.pftl_daq import Device
-from PythonForTheLab import ur
+from PFTL import ur
+from PFTL.controller.pftl_daq import Device
+from PFTL.model.base_daq import DAQBase
 
 
-class AnalogDaq:
-    """Simple Model that reflects the logic of the MVC pattern. This model relies on the real controller
+class AnalogDaq(DAQBase):
+    """Simple model that reflects the logic of the MVC pattern. This model relies on the real controller
     for communicating with an Arduino based DAQ.
 
     Parameters
     ----------
     port : str
-        See :mod:`~PythonForTheLab.Controller.pftl_daq`
+        See :mod:`~PFTL.controller.pftl_daq`
 
     Attributes
     ----------
@@ -26,8 +27,8 @@ class AnalogDaq:
     driver : Device
         The controller
     """
-
     def __init__(self, port):
+        super().__init__(port)
         self.port = port
         self.driver = Device(self.port)
 
@@ -92,7 +93,7 @@ class AnalogDaq:
         return voltage
 
     def __str__(self):
-        return "Analog Daq"
+        return f"Analog Daq on port {self.port}"
 
 
 if __name__ == "__main__":

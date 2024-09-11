@@ -1,5 +1,5 @@
 """
-Experiment Model
+Experiment model
 ================
 Building a model for the experiment allows developers to have a clear picture of the logic of their
 experiments. It allows to build simple GUIs around them and to easily share the code with other users.
@@ -8,12 +8,12 @@ experiments. It allows to build simple GUIs around them and to easily share the 
 import threading
 from datetime import datetime
 from pathlib import Path
+from time import sleep
 
 import numpy as np
-import os
-from time import sleep
 import yaml
-from PythonForTheLab import ur
+
+from PFTL import ur
 
 
 class Experiment:
@@ -26,8 +26,11 @@ class Experiment:
     """
 
     def __init__(self, config_file):
+        self.scan_thread = None
+        self.config = {}
         self.config_file = config_file
         self.is_running = False  # Variable to check if the scan is running
+        self.daq = None
 
         self.scan_range = np.array([0]) * ur("V")
         self.scan_data = np.array([0]) * ur("V")
@@ -45,19 +48,22 @@ class Experiment:
         self.config = data
 
     def load_daq(self):
-        """Load the DAQ. Works with ``DummyDaq`` or ``AnalogDaq``"""
+        """Load the DAQ. Works with ``DummyDaq`` or ``AnalogDaq``
+
+        NOTE:
+            The import of DummyDaq or AnalogDaq happen in this method. It is not best practice, but shows a pattern that
+            is allowed by Python and exploited by many developers. It allows to dynamically load modules if we need them
+            which opens interesting alternatives to having the full program developed.
+        """
         name = self.config["DAQ"]["name"]
         port = self.config["DAQ"]["port"]
         if name == "DummyDaq":
-            from PythonForTheLab.Model.dummy_daq import DummyDaq
-
+            from PFTL.model.dummy_daq import DummyDaq
             self.daq = DummyDaq(port)
 
         elif name == "AnalogDaq":
-            from PythonForTheLab.Model.analog_daq import AnalogDaq
-
+            from PFTL.model.analog_daq import AnalogDaq
             self.daq = AnalogDaq(port)
-
         else:
             raise Exception("The daq specified is not yet supported")
 
@@ -97,7 +103,10 @@ class Experiment:
         self.scan_thread.start()
 
     def stop_scan(self):
-        """Stops the scan."""
+        """Stops the scan.
+        Warning: It does not wait for the scan to actually finish. That behavior needs to be handled by the user.
+
+        """
         self.keep_running = False
 
     def save_data(self):
@@ -113,9 +122,10 @@ class Experiment:
         header = "Scan range in 'V', Scan Data in 'V'"
 
         filename = Path(self.config["Saving"]["filename"])
-        complete_path = saving_folder / filename
 
         i = 1
+        new_filename = f'{filename.stem}_{i:04d}{filename.suffix}'
+        complete_path = saving_folder / new_filename
         while complete_path.exists():
             new_filename = f'{filename.stem}_{i:04d}{filename.suffix}'
             complete_path = saving_folder / new_filename

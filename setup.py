@@ -20,7 +20,7 @@ setup(
     long_description_content_type="text/markdown",
     test_suite="testsuite.testsuite",
     entry_points={
-        "console_scripts": ["py4lab = PythonForTheLab.start:start"],
+        "console_scripts": ["py4lab = PFTL.start:start"],
     },
     install_requires=[
         "pint",

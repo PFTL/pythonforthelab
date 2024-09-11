@@ -1,23 +1,33 @@
 """
-Dummy DAQ Model
+Dummy DAQ model
 ===============
 it only generates random values.
 """
 from random import random
-from PythonForTheLab.Model.base_daq import DAQBase
+from PFTL.model.base_daq import DAQBase
+
+from PFTL import ur
 
 
 class DummyDaq(DAQBase):
     def get_input_voltage(self, channel):
-        """Generates a randomg value
+        """Generates a randomg value in Volts
 
         Returns
         -------
-        float
+        Quantity
             Random value
         """
+        return random()*ur('V')
 
-        return random()
+    def get_output_voltage(self, channel):
+        """ Generates a random value in Volts
+        Returns
+        -------
+        Quantity
+            Random value
+        """
+        return random() * ur('V')
 
 
 if __name__ == "__main__":

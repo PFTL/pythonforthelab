@@ -18,8 +18,8 @@ def start():
         print(help_message)
         return
 
-    from PythonForTheLab.Model.experiment import Experiment
-    from PythonForTheLab.View.start_gui import start_gui
+    from PFTL.model.experiment import Experiment
+    from PFTL.view.start_gui import start_gui
 
     experiment = Experiment(args[0])
     experiment.load_config()

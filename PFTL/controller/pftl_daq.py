@@ -1,5 +1,5 @@
 """
-PFTL DAQ Controller
+PFTL DAQ controller
 =====================
 
 Python For The Lab revolves around controlling a simple DAQ device built on top of an Arduino.
@@ -16,7 +16,7 @@ from time import sleep
 
 
 class Device:
-    """Controller for the serial devices that ships with Python for the Lab.
+    """controller for the serial devices that ships with Python for the Lab.
 
     Parameters
     ----------
@@ -33,7 +33,7 @@ class Device:
 
     DEFAULTS = {
         "write_termination": "\n",
-        "read_termination": "\n",
+        "read_termination": "\r\n",
         "encoding": "ascii",
         "baudrate": 9600,
         "read_timeout": 1,
@@ -94,9 +94,14 @@ class Device:
             The channel
         output_value : int
             The output value in the range 0-4095
+
+        Returns
+        -------
+        int
+            The value returned by the device
         """
         message = f"OUT:CH{channel} {output_value}"
-        self.query(message)
+        return self.query(message)
 
     def get_analog_output(self, channel):
         """Retrieves the current value set to the analog channel
@@ -108,6 +113,7 @@ class Device:
 
         Returns
         -------
+        int
             The setpoint in the given channel
         """
         message = f"OUT:CH{channel}?"
@@ -116,7 +122,7 @@ class Device:
         return ans
 
     def query(self, message):
-        """Wrapper around writing and reading to make the flow easier.
+        """Wrapper around writing and reading from the device to make the flow easier.
 
         Parameters
         ----------
@@ -133,6 +139,8 @@ class Device:
         self.rsc.write(message)
         ans = self.rsc.readline()
         ans = ans.decode(self.DEFAULTS["encoding"]).strip()
+        if ans.startswith("ERROR"):
+            raise Exception(f"There was an error with the message passed to the device: {ans}")
         return ans
 
     def finalize(self):

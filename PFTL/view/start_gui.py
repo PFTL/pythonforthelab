@@ -13,7 +13,7 @@ Convenience function to wrap the initialization of a window. The Experiment clas
 """
 import sys
 from PyQt5.QtWidgets import QApplication
-from PythonForTheLab.View.main_window import MainWindow
+from PFTL.view.main_window import MainWindow
 
 
 def start_gui(experiment):
