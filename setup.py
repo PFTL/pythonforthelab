@@ -3,15 +3,21 @@ from setuptools import setup, find_packages
 
 with open("README.md") as f:
     long_description = f.read()
+
+with open("PFTL/__init__.py") as f:
+    version = f.readline()
+    version = version.split("=")[-1].strip().replace("\"", "").replace("'", "")
+    print(version)
+
 setup(
     name="py4lab",
-    version="1.0.0",
-    packages=find_packages(),
+    version=version,
+    packages=find_packages("."),
     url="https://github.com/PFTL/PythonForTheLab",
     license="GPLv3",
     classifiers=[
         "Programming Language :: Python :: 3",
-        "Programming Language :: Python :: 3.9",
+        "Programming Language :: Python :: 3.12",
     ],
     author="Aquiles Carattino",
     author_email="aquiles@pythonforthelab.com",

@@ -8,27 +8,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9ec2a705-c50c-4efa-bbc1-2f39cfed9d10" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Docs/source/conf.py" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/source/conf.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Examples/run_experiment.py" beforeDir="false" afterPath="$PROJECT_DIR$/Examples/run_experiment.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Examples/start_gui.py" beforeDir="false" afterPath="$PROJECT_DIR$/Examples/start_gui.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PythonForTheLab/Controller/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/PFTL/controller/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PythonForTheLab/Controller/pftl_daq.py" beforeDir="false" afterPath="$PROJECT_DIR$/PFTL/controller/pftl_daq.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PythonForTheLab/Model/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/PFTL/model/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PythonForTheLab/Model/analog_daq.py" beforeDir="false" afterPath="$PROJECT_DIR$/PFTL/model/analog_daq.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PythonForTheLab/Model/base_daq.py" beforeDir="false" afterPath="$PROJECT_DIR$/PFTL/model/base_daq.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PythonForTheLab/Model/dummy_daq.py" beforeDir="false" afterPath="$PROJECT_DIR$/PFTL/model/dummy_daq.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PythonForTheLab/Model/experiment.py" beforeDir="false" afterPath="$PROJECT_DIR$/PFTL/model/experiment.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PythonForTheLab/View/GUI/logo.png" beforeDir="false" afterPath="$PROJECT_DIR$/PFTL/view/GUI/logo.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PythonForTheLab/View/GUI/main_window.ui" beforeDir="false" afterPath="$PROJECT_DIR$/PFTL/view/GUI/main_window.ui" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PythonForTheLab/View/GUI/main_window01.ui" beforeDir="false" afterPath="$PROJECT_DIR$/PFTL/view/GUI/main_window01.ui" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PythonForTheLab/View/GUI/resources.qrc" beforeDir="false" afterPath="$PROJECT_DIR$/PFTL/view/GUI/resources.qrc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PythonForTheLab/View/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/PFTL/view/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PythonForTheLab/View/main_window.py" beforeDir="false" afterPath="$PROJECT_DIR$/PFTL/view/main_window.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PythonForTheLab/View/start_gui.py" beforeDir="false" afterPath="$PROJECT_DIR$/PFTL/view/start_gui.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PythonForTheLab/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/PFTL/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PythonForTheLab/__main__.py" beforeDir="false" afterPath="$PROJECT_DIR$/PFTL/__main__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PythonForTheLab/start.py" beforeDir="false" afterPath="$PROJECT_DIR$/PFTL/start.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/setup.py" beforeDir="false" afterPath="$PROJECT_DIR$/setup.py" afterDir="false" />
       <change beforePath="$USER_HOME$/Nextcloud/Documents/Business/Dispertech/Programs/NanoQNTPy/pyproject.toml" beforeDir="false" afterPath="$USER_HOME$/Nextcloud/Documents/Business/Dispertech/Programs/NanoQNTPy/pyproject.toml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -103,7 +82,7 @@
       <workItem from="1708520824029" duration="601000" />
       <workItem from="1708937850178" duration="13301000" />
       <workItem from="1709717040039" duration="724000" />
-      <workItem from="1726058130809" duration="1550000" />
+      <workItem from="1726058130809" duration="2057000" />
     </task>
     <servers />
   </component>
