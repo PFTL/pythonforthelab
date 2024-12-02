@@ -7,6 +7,6 @@ Models are where all the logic of the experimentor should be placed. In this cas
    :maxdepth: 1
    :caption: Models:
 
-   PythonForTheLab.DeviceModel
-   PythonForTheLab.ExperimentModel
+   PFTL.device_model
+   PFTL.experiment_model
 

@@ -2,9 +2,9 @@
 Start Function
 ==============
 After installing Python for the Lab it is possible to start it directly from within the command line using `pftl.start`.
-It takes one argument that is the path to the configuration file.
+It takes one argument that is the path to the configuration file::
 
-    $ pftl.start Config/experiment.yml
+    $ py4lab Config/experiment.yml
 
 """
 

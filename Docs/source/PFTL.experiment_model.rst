@@ -1,6 +1,6 @@
 Experiment Model
 ================
 
-.. automodule:: PythonForTheLab.Model.experiment
+.. automodule:: PFTL.model.experiment
     :members:
     :undoc-members:

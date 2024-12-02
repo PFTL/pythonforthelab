@@ -1,8 +1,12 @@
 """
 Dummy DAQ model
 ===============
-it only generates random values.
+Simulated device that allows to run the program without any DAQ card attached to the computer.
+
+It returns random values for the methods that should read from the device.
+
 """
+
 from random import random
 
 from PFTL import ur
@@ -11,7 +15,7 @@ from PFTL.model.base_daq import DAQBase
 
 class DummyDaq(DAQBase):
     def get_input_voltage(self, channel):
-        """Generates a randomg value in Volts
+        """Generates a random value in Volts
 
         Returns
         -------
@@ -22,6 +26,7 @@ class DummyDaq(DAQBase):
 
     def get_output_voltage(self, channel):
         """ Generates a random value in Volts
+
         Returns
         -------
         Quantity

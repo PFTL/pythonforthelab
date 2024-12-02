@@ -8,7 +8,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9ec2a705-c50c-4efa-bbc1-2f39cfed9d10" name="Changes" comment="" />
+    <list default="true" id="9ec2a705-c50c-4efa-bbc1-2f39cfed9d10" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/ch_future.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/ch_future.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/source/PythonForTheLab.Controller.rst" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/source/PFTL.controller.rst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/source/PythonForTheLab.DeviceModel.rst" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/source/PFTL.device_model.rst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/source/PythonForTheLab.ExperimentModel.rst" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/source/PFTL.experiment_model.rst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/source/PythonForTheLab.Model.rst" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/source/PFTL.model.rst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/source/PythonForTheLab.View.rst" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/source/PFTL.view.rst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/source/PythonForTheLab.rst" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/source/PFTL.rst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/source/conf.py" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/source/conf.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/source/index.rst" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/source/index.rst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PFTL/model/dummy_daq.py" beforeDir="false" afterPath="$PROJECT_DIR$/PFTL/model/dummy_daq.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PFTL/start.py" beforeDir="false" afterPath="$PROJECT_DIR$/PFTL/start.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PFTL/view/main_window.py" beforeDir="false" afterPath="$PROJECT_DIR$/PFTL/view/main_window.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -65,7 +80,7 @@
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyIntegratedToolsModulesConfigurable"
+    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
   }
 }]]></component>
   <component name="SharedIndexes">
@@ -91,7 +106,7 @@
       <workItem from="1708937850178" duration="13301000" />
       <workItem from="1709717040039" duration="724000" />
       <workItem from="1726058130809" duration="8043000" />
-      <workItem from="1733159087030" duration="689000" />
+      <workItem from="1733159087030" duration="3008000" />
     </task>
     <servers />
   </component>

@@ -67,7 +67,7 @@ class MainWindow(QMainWindow):
         self.delay_line.setText(self.experiment.config["Scan"]["delay"])
         self.out_channel_line.setText(
             str(self.experiment.config["Scan"]["channel_out"])
-        )
+            )
         self.in_channel_line.setText(str(self.experiment.config["Scan"]["channel_in"]))
 
         self.gui_timer = QTimer()
@@ -78,15 +78,26 @@ class MainWindow(QMainWindow):
         self.gui_timer.timeout.connect(self.update_gui)
 
     def update_plot(self):
+        """ This method is called periodically via a QTimer. It updates the plot to show what is currently available
+        in the experiment data. If the acquisition is over, the timer is stopped (this prevents wasting computation
+        resources updating a plot that does not change).
+
+        """
         self.plot.setData(
             self.experiment.scan_range[: self.experiment.current_scan_index].m_as("V"),
             self.experiment.scan_data[: self.experiment.current_scan_index].m_as("V"),
-        )
+            )
 
         if not self.experiment.is_running:
             self.plot_timer.stop()
 
     def start_scan(self):
+        """ Wrapper that updates the values from the UI (start, stop, num_steps, delay, channel_in, channel_out)
+        before starting the scan.
+
+        .. Warning:: There is a bug in this code (left for students to find out and sort it). If a user changes the
+            values on the UI and presses "start" again, the metadata will store the new values, not the proper ones.
+        """
         start = self.start_line.text()
         stop = self.stop_line.text()
         num_steps = int(self.num_steps_line.text())
@@ -102,8 +113,8 @@ class MainWindow(QMainWindow):
                 "channel_in": channel_in,
                 "channel_out": channel_out,
                 "delay": delay,
-            }
-        )
+                }
+            )
         self.experiment.start_scan()
         self.plot_widget.setLabel('bottom', f"Port: {self.experiment.config['Scan']['channel_out']}", units="V")
         self.plot_widget.setLabel('left', f"Port: {self.experiment.config['Scan']['channel_in']}", units="V")
@@ -111,6 +122,8 @@ class MainWindow(QMainWindow):
         self.plot_timer.start(50)
 
     def update_gui(self):
+        """ It is called on a timer to display the latest values of the applied voltage and the measured voltage.
+        """
         self.out_line.setText(f"{self.experiment.voltage_out:3.2f}")
         self.measured_line.setText(f"{self.experiment.last_measured_value:3.2f}")
 
@@ -123,5 +136,10 @@ class MainWindow(QMainWindow):
             self.stop_button.setEnabled(False)
 
     def stop_scan(self):
+        """ Stops the scan. It is wrapping the :func:`~PFTL.model.experiment.Experiment.stop_scan` method. The only
+        reason to
+        do it this way is in
+        case stopping a scan requires more work, for example stopping timers to prevent useless updates, etc.
+        """
         self.experiment.stop_scan()
-        print("Stopping Scan")
+        print("UI: Stopping Scan")

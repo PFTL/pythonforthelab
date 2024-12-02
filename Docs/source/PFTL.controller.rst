@@ -8,6 +8,6 @@ not the imposed logic from the experimentor. Loops, etc. should be placed within
 Module contents
 ---------------
 
-.. automodule:: PythonForTheLab.Controller.pftl_daq
+.. automodule:: PFTL.controller.pftl_daq
     :members:
     :undoc-members:

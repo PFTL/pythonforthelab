@@ -104,7 +104,9 @@ class Experiment:
 
     def stop_scan(self):
         """Stops the scan.
-        Warning: It does not wait for the scan to actually finish. That behavior needs to be handled by the user.
+
+        .. Warning::
+            It does not wait for the scan to actually finish. That behavior needs to be handled by the user.
 
         """
         self.keep_running = False
