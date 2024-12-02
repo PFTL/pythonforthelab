@@ -4,7 +4,6 @@
     <content url="file://$MODULE_DIR$" />
     <orderEntry type="jdk" jdkName="pftl" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="module" module-name="code" />
     <orderEntry type="module" module-name="NanoQNTPy" />
   </component>
   <component name="PyDocumentationSettings">
