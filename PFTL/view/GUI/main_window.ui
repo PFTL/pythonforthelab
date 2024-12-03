@@ -39,7 +39,17 @@
         </widget>
        </item>
        <item>
-        <widget class="QLineEdit" name="out_channel_line"/>
+        <widget class="QLineEdit" name="out_channel_line">
+         <property name="maximumSize">
+          <size>
+           <width>40</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="maxLength">
+          <number>1</number>
+         </property>
+        </widget>
        </item>
        <item>
         <widget class="QLabel" name="start_label">
@@ -69,7 +79,20 @@
         </widget>
        </item>
        <item>
-        <widget class="QLineEdit" name="num_steps_line"/>
+        <widget class="QLineEdit" name="num_steps_line">
+         <property name="minimumSize">
+          <size>
+           <width>30</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>55</width>
+           <height>16777215</height>
+          </size>
+         </property>
+        </widget>
        </item>
        <item>
         <widget class="QLabel" name="label">
@@ -102,7 +125,11 @@
         </widget>
        </item>
        <item>
-        <widget class="QLineEdit" name="in_channel_line"/>
+        <widget class="QLineEdit" name="in_channel_line">
+         <property name="maxLength">
+          <number>1</number>
+         </property>
+        </widget>
        </item>
        <item>
         <widget class="QLabel" name="delay_label">

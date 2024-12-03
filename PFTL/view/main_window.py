@@ -9,9 +9,9 @@ own .ui file, generated with Qt Designer.
 from pathlib import Path
 
 import pyqtgraph as pg
-from PyQt5 import uic
-from PyQt5.QtCore import QTimer
-from PyQt5.QtWidgets import QMainWindow
+from PyQt6 import uic
+from PyQt6.QtCore import QTimer
+from PyQt6.QtWidgets import QMainWindow
 
 pg.setConfigOption("background", "w")
 pg.setConfigOption("foreground", "k")
@@ -50,12 +50,12 @@ class MainWindow(QMainWindow):
         #     title="Plotting I vs V", labels={"left": "Current", "bottom": "Voltage"}
         # )
 
-        pen = pg.mkPen(cosmetic=False, width=0.02, color="black")
+        pen = pg.mkPen(cosmetic=False, width=0.05, color="black")
         self.plot = self.plot_widget.plot([0], [0], pen=pen, title='I vs V')
 
         plot_item = self.plot_widget.getPlotItem()
         plot_item.setXRange(0, 3.3)
-        plot_item.setYRange(0, 1)
+        plot_item.setYRange(0, 5)
 
         self.start_button.clicked.connect(self.start_scan)
         self.stop_button.clicked.connect(self.stop_scan)
@@ -85,7 +85,7 @@ class MainWindow(QMainWindow):
         """
         self.plot.setData(
             self.experiment.scan_range[: self.experiment.current_scan_index].m_as("V"),
-            self.experiment.scan_data[: self.experiment.current_scan_index].m_as("V"),
+            self.experiment.scan_data[: self.experiment.current_scan_index].m_as("mA"),
             )
 
         if not self.experiment.is_running:
@@ -117,7 +117,7 @@ class MainWindow(QMainWindow):
             )
         self.experiment.start_scan()
         self.plot_widget.setLabel('bottom', f"Port: {self.experiment.config['Scan']['channel_out']}", units="V")
-        self.plot_widget.setLabel('left', f"Port: {self.experiment.config['Scan']['channel_in']}", units="V")
+        self.plot_widget.setLabel('left', f"Port: {self.experiment.config['Scan']['channel_in']}", units="mA")
 
         self.plot_timer.start(50)
 
@@ -125,7 +125,7 @@ class MainWindow(QMainWindow):
         """ It is called on a timer to display the latest values of the applied voltage and the measured voltage.
         """
         self.out_line.setText(f"{self.experiment.voltage_out:3.2f}")
-        self.measured_line.setText(f"{self.experiment.last_measured_value:3.2f}")
+        self.measured_line.setText(f"{self.experiment.last_measured_value:.2f~#P}")
 
         if self.experiment.is_running:
             self.start_button.setEnabled(False)

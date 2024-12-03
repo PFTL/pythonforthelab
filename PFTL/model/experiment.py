@@ -35,7 +35,7 @@ class Experiment:
         self.scan_range = np.array([0]) * ur("V")
         self.scan_data = np.array([0]) * ur("V")
 
-        self.last_measured_value = 0 * ur("V")
+        self.last_measured_value = 0 * ur("A")
         self.voltage_out = 0 * ur("V")
 
         self.keep_running = False
@@ -80,7 +80,7 @@ class Experiment:
         num_steps = int(self.config["Scan"]["num_steps"])
         delay = ur(self.config["Scan"]["delay"])
         self.scan_range = np.linspace(start, stop, num_steps) * ur("V")
-        self.scan_data = np.zeros(num_steps) * ur("V")
+        self.scan_data = np.zeros(num_steps) * ur("A")
         self.current_scan_index = 0
         self.keep_running = True
         for volt in self.scan_range:
@@ -91,8 +91,9 @@ class Experiment:
                 self.config["Scan"]["channel_out"]
             )
             measured_voltage = self.daq.get_input_voltage(self.config["Scan"]["channel_in"])
-            self.last_measured_value = measured_voltage
-            self.scan_data[self.current_scan_index] = measured_voltage
+            measured_current = measured_voltage / ur(self.config['DAQ']['resistance'])
+            self.last_measured_value = measured_current
+            self.scan_data[self.current_scan_index] = measured_current
             self.current_scan_index += 1
             sleep(delay.m_as("s"))
         self.is_running = False
@@ -114,14 +115,14 @@ class Experiment:
     def save_data(self):
         """Save data to the folder specified in the config file."""
 
-        data_folder = Path(self.config["Saving"]["folder"])
+        data_folder = Path(self.config["Saving"]["folder"]).expanduser()
         today_folder = f"{datetime.today():%Y-%m-%d}"
         saving_folder = data_folder / today_folder
 
         saving_folder.mkdir(exist_ok=True, parents=True)
 
-        data = np.vstack([self.scan_range, self.scan_data]).T
-        header = "Scan range in 'V', Scan Data in 'V'"
+        data = np.vstack([self.scan_range.m_as('V'), self.scan_data.m_as('mA')]).T
+        header = "Scan range in 'V', Scan Data in 'mA'"
 
         filename = Path(self.config["Saving"]["filename"])
 
@@ -134,7 +135,7 @@ class Experiment:
             i += 1
 
         metadata_file = complete_path.with_suffix('.yml')
-        np.savetxt(complete_path, data.m_as("V"), header=header)
+        np.savetxt(complete_path, data, header=header)
 
         with open(metadata_file, "w") as f:
             f.write(yaml.dump(self.config, default_flow_style=False))

@@ -2,8 +2,9 @@ User:
   name: Aquiles
 
 DAQ:
-  name: DummyDaq # Choose between DummyDaq or AnalogDaq
-  port: /dev/cu.usbmodem1301
+  name: AnalogDaq # Choose between DummyDaq or AnalogDaq
+  port: /dev/cu.usbmodem11201
+  resistance: 220ohm
 
 Scan:
   start: 0V
@@ -15,4 +16,4 @@ Scan:
 
 Saving:
   filename: data.dat # Files won't be overwritten, but renamed as data_001.dat, etc.
-  folder: /home/aquiles/Data
+  folder: ~/Data

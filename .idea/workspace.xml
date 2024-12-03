@@ -8,7 +8,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9ec2a705-c50c-4efa-bbc1-2f39cfed9d10" name="Changes" comment="" />
+    <list default="true" id="9ec2a705-c50c-4efa-bbc1-2f39cfed9d10" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Examples/experiment.yml" beforeDir="false" afterPath="$PROJECT_DIR$/Examples/experiment.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PFTL/model/experiment.py" beforeDir="false" afterPath="$PROJECT_DIR$/PFTL/model/experiment.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PFTL/view/GUI/main_window.ui" beforeDir="false" afterPath="$PROJECT_DIR$/PFTL/view/GUI/main_window.ui" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PFTL/view/main_window.py" beforeDir="false" afterPath="$PROJECT_DIR$/PFTL/view/main_window.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PFTL/view/start_gui.py" beforeDir="false" afterPath="$PROJECT_DIR$/PFTL/view/start_gui.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -54,20 +62,20 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "full.screen.before.presentation.mode": "false",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "/Users/aquiles/Documents/PythonForTheLab/code/pythonforthelab",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;full.screen.before.presentation.mode&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/aquiles/Documents/PythonForTheLab/code/pythonforthelab&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
   }
-}]]></component>
+}</component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -91,7 +99,8 @@
       <workItem from="1708937850178" duration="13301000" />
       <workItem from="1709717040039" duration="724000" />
       <workItem from="1726058130809" duration="8043000" />
-      <workItem from="1733159087030" duration="3449000" />
+      <workItem from="1733159087030" duration="3771000" />
+      <workItem from="1733258341715" duration="1676000" />
     </task>
     <servers />
   </component>
