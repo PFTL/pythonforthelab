@@ -6,7 +6,7 @@ Python for the Lab (PFTL) is a simple program to acquire data from a DAQ device.
 
 PFTL was developed by [Aquiles Carattino](https://www.aquiles.me) to explain to researchers, through simple examples, what can be achieved quickly with little programming knowledge. The ultimate goal of this project is to serve as a reference place for people interested in instrumentation written in Python.
 
-You can find the code of this package at [Github](https://github.com/PFTL/pythonforthelab/), the documentation is hosted at [Read The Docs](https://readthedocs.org/projects/python-for-the-lab/). If you are interested in learning more about Python For The Lab, you can check [the courses](https:///www.pythonforthelab.com/courses/) or [buy a copy of the book](https://gum.co/kgSsv).
+You can find the code of this package at [Github](https://github.com/PFTL/pythonforthelab/), the documentation is hosted at [Read The Docs](https://python-for-the-lab.readthedocs.io). If you are interested in learning more about Python For The Lab, you can check [the courses](https:///www.pythonforthelab.com/courses/) or [buy a copy of the book](https://gum.co/kgSsv).
 
 The GUI
 -------
@@ -22,4 +22,4 @@ The objective of PFTL is to control a device to measure the IV curve of an LED. 
 
 Documentation
 -------------
-Aditional documentation can be found at [Read the Docs](http://python-for-the-lab.readthedocs.io/en/latest/), at [Python for the Lab](https://www.pythonforthelab.com) or in [the book](https://gum.co/kgSsv).
+Aditional documentation can be found at [Read the Docs](https://python-for-the-lab.readthedocs.io), at [Python for the Lab](https://www.pythonforthelab.com) or in [the book](https://gum.co/kgSsv).

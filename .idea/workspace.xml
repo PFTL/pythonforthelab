@@ -8,15 +8,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9ec2a705-c50c-4efa-bbc1-2f39cfed9d10" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Examples/experiment.yml" beforeDir="false" afterPath="$PROJECT_DIR$/Examples/experiment.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PFTL/model/experiment.py" beforeDir="false" afterPath="$PROJECT_DIR$/PFTL/model/experiment.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PFTL/view/GUI/main_window.ui" beforeDir="false" afterPath="$PROJECT_DIR$/PFTL/view/GUI/main_window.ui" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PFTL/view/main_window.py" beforeDir="false" afterPath="$PROJECT_DIR$/PFTL/view/main_window.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PFTL/view/start_gui.py" beforeDir="false" afterPath="$PROJECT_DIR$/PFTL/view/start_gui.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
-    </list>
+    <list default="true" id="9ec2a705-c50c-4efa-bbc1-2f39cfed9d10" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -100,7 +92,7 @@
       <workItem from="1709717040039" duration="724000" />
       <workItem from="1726058130809" duration="8043000" />
       <workItem from="1733159087030" duration="3771000" />
-      <workItem from="1733258341715" duration="1676000" />
+      <workItem from="1733258341715" duration="2019000" />
     </task>
     <servers />
   </component>
